@@ -12,7 +12,7 @@ The purpose of this sample is to show you how to test an EJB in several ways :
 
 ## Class diagram
 
-![image](http://)
+![image](https://github.com/agoncal/agoncal-sample-arquilian/raw/master/01-wytiwyr/src/main/webapp/classdiag.png)
 
 ## Compile and package
 
