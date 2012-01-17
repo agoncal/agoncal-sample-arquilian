@@ -8,7 +8,7 @@ The purpose of this sample is to show you how to test an EJB in several ways :
 * Integration testing with the standard EJBContainer of the EJB 3.1
 * Integration testing with Arquillian
 
-[Read more on my blog](http://www.antoniogoncalves.org)
+[Read more on my blog](http://agoncal.wordpress.com/2012/01/16/wytiwyr-what-you-test-is-what-you-run/)
 
 ## Class diagram
 

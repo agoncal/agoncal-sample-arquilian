@@ -6,9 +6,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.agoncal.sample.arquilian</groupId>
     <artifactId>parent</artifactId>
-    <packaging>pom</packaging>
     <version>1.0</version>
-    <name>Parent of Arquillian Samples</name>
+    <packaging>pom</packaging>
+    <name>00 - Parent of Arquillian Samples</name>
 
     <modules>
         <module>01-wytiwyr</module>
