@@ -38,5 +38,5 @@ The purpose of this sample is to execute unit and integration tests. So to execu
 * `mvn integration-test` : this will execute both integration tests `ItemEJBWithArquillianIT` and `ItemEJBWithoutArquillianIT`
 
 <div class="footer">
-        <span class="footerTitle"><span class="uc">a</span>ntonio <span class="uc">g</span>oncalves</span>
-    </div>
+    <span class="footerTitle"><span class="uc">a</span>ntonio <span class="uc">g</span>oncalves</span>
+</div>

@@ -28,6 +28,8 @@ import static org.mockito.Mockito.*;
 //@Ignore
 public class ItemEJBTest {
 
+    Logger log;
+
     // ======================================
     // =             Attributes             =
     // ======================================

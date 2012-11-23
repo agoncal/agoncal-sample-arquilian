@@ -15,6 +15,7 @@
     </modules>
 
     <properties>
+        <version.java>1.6</version.java>
         <version.junit>4.10</version.junit>
         <version.glassfish>3.1.2-b16</version.glassfish>
         <version.arquillian>1.0.0.CR5</version.arquillian>
@@ -51,8 +52,8 @@
                 <version>${version.maven.compiler.plugin}</version>
                 <inherited>true</inherited>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>${version.java}</source>
+                    <target>${version.java}</target>
                 </configuration>
             </plugin>
             <plugin>

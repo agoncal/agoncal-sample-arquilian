@@ -7,3 +7,10 @@ vpproject
 target
 *.ipr
 *.iws
+rebel.xml
+*DB
+*.dat
+.classpath
+.project
+.settings
+WebContent
