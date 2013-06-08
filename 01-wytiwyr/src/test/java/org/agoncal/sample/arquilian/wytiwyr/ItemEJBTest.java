@@ -25,7 +25,6 @@ import static org.mockito.Mockito.*;
  *         http://www.antoniogoncalves.org
  */
 @RunWith(MockitoJUnitRunner.class)
-//@Ignore
 public class ItemEJBTest {
 
     Logger log;

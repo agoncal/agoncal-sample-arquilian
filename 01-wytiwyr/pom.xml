@@ -43,6 +43,18 @@
     <build>
         <finalName>sampleArquilianWytiwyr</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
             <!-- Run mvn clean package embedded-glassfish:run -->
             <!--     mvn clean package org.glassfish:maven-embedded-glassfish-plugin:3.1.1:run-->
             <!--     mvn -Dmaven.test.skip=true clean package org.glassfish:maven-embedded-glassfish-plugin:3.1.1:run-->
