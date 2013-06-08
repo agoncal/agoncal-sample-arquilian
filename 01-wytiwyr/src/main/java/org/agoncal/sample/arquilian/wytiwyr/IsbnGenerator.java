@@ -21,4 +21,12 @@ public class IsbnGenerator {
         logger.info("generate");
         return "13-84356-" + Math.abs(new Random().nextInt());
     }
+
+    // ======================================
+    // = Getters & Setters when Mock testing=
+    // ======================================
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
 }

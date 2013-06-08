@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
  */
-//@Ignore
+@Ignore
 @RunWith(Arquillian.class)
 public class ItemEJBWithArquillianIT {
 

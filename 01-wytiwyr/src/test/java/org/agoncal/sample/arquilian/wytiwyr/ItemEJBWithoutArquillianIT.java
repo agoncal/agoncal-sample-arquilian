@@ -2,6 +2,7 @@ package org.agoncal.sample.arquilian.wytiwyr;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.ejb.embeddable.EJBContainer;
@@ -57,7 +58,10 @@ public class ItemEJBWithoutArquillianIT {
     public void shouldFindAllScifiBooks() throws Exception {
 
         // Check JNDI dependencies
+        assertNotNull(ctx.lookup("java:global/classes/DatabasePopulator"));
+        assertNotNull(ctx.lookup("java:global/classes/DatabasePopulator!org.agoncal.sample.arquilian.wytiwyr.DatabasePopulator"));
         assertNotNull(ctx.lookup("java:global/classes/ItemEJB"));
+        assertNotNull(ctx.lookup("java:global/classes/ItemEJB!org.agoncal.sample.arquilian.wytiwyr.ItemEJB"));
         assertNotNull(ctx.lookup("java:global/jdbc/sampleArquilianWytiwyrDS"));
 
         // Looks up for the EJB

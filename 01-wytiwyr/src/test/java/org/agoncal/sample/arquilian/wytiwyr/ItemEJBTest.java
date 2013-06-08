@@ -47,9 +47,11 @@ public class ItemEJBTest {
 
     @Before
     public void initDependencies() throws Exception {
+        IsbnGenerator isbnGenerator = new IsbnGenerator();
+        isbnGenerator.setLogger(Logger.getLogger(IsbnGenerator.class.getName()));
         itemEJB = new ItemEJB();
         itemEJB.setEntityManager(mockedEntityManager);
-        itemEJB.setNumberGenerator(new IsbnGenerator());
+        itemEJB.setNumberGenerator(isbnGenerator);
         itemEJB.setLogger(Logger.getLogger(ItemEJB.class.getName()));
     }
 
