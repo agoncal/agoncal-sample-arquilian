@@ -7,9 +7,10 @@ import java.util.logging.Logger;
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
+ *         --
  */
 public class IsbnGenerator {
-    
+
     @Inject
     private Logger logger;
 

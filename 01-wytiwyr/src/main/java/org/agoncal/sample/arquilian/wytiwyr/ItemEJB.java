@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
+ *         --
  */
 @Stateless
 @Path("/items")

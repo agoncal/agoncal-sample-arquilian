@@ -13,6 +13,7 @@
     <modules>
         <module>01-wytiwyr</module>
         <module>02-se-container</module>
+        <module>03-persistence</module>
     </modules>
 
     <properties>

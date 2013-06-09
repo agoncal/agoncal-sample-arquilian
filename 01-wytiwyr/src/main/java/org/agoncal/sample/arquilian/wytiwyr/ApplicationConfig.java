@@ -8,6 +8,7 @@ import java.util.Set;
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
+ *         --
  */
 @ApplicationPath("/rs")
 public class ApplicationConfig extends Application {

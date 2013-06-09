@@ -8,7 +8,7 @@
     <artifactId>se-container</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>02 - Tests with Weld SE Container</name>
+    <name>02 - Tests with SE Containers</name>
 
     <parent>
         <groupId>org.agoncal.sample.arquilian</groupId>
