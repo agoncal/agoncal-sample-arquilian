@@ -16,14 +16,27 @@ import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
+/**
+ * @author Antonio Goncalves
+ *         http://www.antoniogoncalves.org
+ *         --
+ */
 @RunWith(Arquillian.class)
 public class HelloIT {
+
+    // ======================================
+    // =             Attributes             =
+    // ======================================
 
     @Inject
     BeanManager beanManager;
 
     @Inject
     Hello hello;
+
+    // ======================================
+    // =          Lifecycle Methods         =
+    // ======================================
 
     @Deployment
     public static Archive<?> createTestArchive() {
@@ -32,6 +45,10 @@ public class HelloIT {
                 addClass(World.class).
                 addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
+
+    // ======================================
+    // =              Unit tests            =
+    // ======================================
 
     @Test
     public void testCdiBootstrap() {

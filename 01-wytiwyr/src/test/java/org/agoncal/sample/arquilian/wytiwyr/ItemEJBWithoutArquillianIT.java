@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
+ *         --
  */
 public class ItemEJBWithoutArquillianIT {
 

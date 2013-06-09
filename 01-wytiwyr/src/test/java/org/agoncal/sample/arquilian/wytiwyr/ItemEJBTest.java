@@ -23,11 +23,10 @@ import static org.mockito.Mockito.*;
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
+ *         --
  */
 @RunWith(MockitoJUnitRunner.class)
 public class ItemEJBTest {
-
-    Logger log;
 
     // ======================================
     // =             Attributes             =

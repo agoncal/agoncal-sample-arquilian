@@ -11,6 +11,10 @@ import java.util.logging.Logger;
  */
 public class IsbnGenerator {
 
+    // ======================================
+    // =             Attributes             =
+    // ======================================
+
     @Inject
     private Logger logger;
 

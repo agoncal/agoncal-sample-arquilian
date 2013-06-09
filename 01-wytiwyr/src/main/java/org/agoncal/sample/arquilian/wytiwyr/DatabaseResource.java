@@ -17,6 +17,10 @@ import javax.persistence.PersistenceContext;
 //)
 public class DatabaseResource {
 
+    // ======================================
+    // =             Attributes             =
+    // ======================================
+
     @Produces
     @PersistenceContext(unitName = "sampleArquilianWytiwyrPU")
     private EntityManager em;
