@@ -6,7 +6,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.AfterClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -58,10 +57,6 @@ public class ItemEJBIT {
 
     @Test
     public void shouldFindAllScifiBooks() throws Exception {
-
-        // Check JNDI dependencies
-        Context ctx = new InitialContext();
-        assertNotNull(ctx.lookup("java:global/jdbc/sampleArquilianWytiwyrDS"));
 
         // Finds all the scifi books
         int initialNumberOfScifiBooks = itemEJB.findAllScifiBooks().size();

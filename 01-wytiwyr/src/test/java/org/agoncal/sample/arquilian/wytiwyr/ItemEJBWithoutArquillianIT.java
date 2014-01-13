@@ -2,7 +2,6 @@ package org.agoncal.sample.arquilian.wytiwyr;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.ejb.embeddable.EJBContainer;
@@ -36,7 +35,7 @@ public class ItemEJBWithoutArquillianIT {
 
     @BeforeClass
     public static void initContainer() throws Exception {
-        Map<String, Object> properties = new HashMap<String, Object>();
+        Map<String, Object> properties = new HashMap<>();
         properties.put(EJBContainer.MODULES, new File[]{new File("target/classes"), new File("target/test-classes")});
         ec = EJBContainer.createEJBContainer(properties);
         ctx = ec.getContext();

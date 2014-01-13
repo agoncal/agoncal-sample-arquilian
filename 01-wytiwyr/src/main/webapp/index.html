@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<style>
-body {
+    <meta charset="utf-8">
+    <style>
+        body {
             font-family: "Trebuchet MS", sans-serif;
             padding: 30px 35px 10px;
         }
@@ -43,8 +43,8 @@ body {
         .footerTitle {
             text-shadow: 0 -1px 2px #000;
         }
-</style>
-<title>index2.html</title>
+    </style>
+    <title>index2.html</title>
 </head>
 <body>
 <h1>Sample &ndash; Arquilian &ndash; What You Test Is What You Run</h1>
@@ -54,9 +54,9 @@ body {
 <p>The purpose of this sample is to show you how to test an EJB in several ways :</p>
 
 <ul>
-<li>Unit testing with Mockito</li>
-<li>Integration testing with the standard EJBContainer of the EJB 3.1</li>
-<li>Integration testing with Arquillian</li>
+    <li>Unit testing with Mockito</li>
+    <li>Integration testing with the standard EJBContainer of the EJB 3.1</li>
+    <li>Integration testing with Arquillian</li>
 </ul>
 
 
@@ -64,45 +64,55 @@ body {
 
 <h2>Class diagram</h2>
 
-<p><img src="classdiag.png" alt="Class diagram" /></p>
+<p><img src="classdiag.png" alt="Class diagram"/></p>
 
 <h2>Compile and package</h2>
 
-<p>Being Maven centric, you can compile and package it with <code>mvn clean compile</code>, <code>mvn clean package</code> or <code>mvn clean install</code>. The <code>package</code> and <code>install</code> phase will automatically trigger the unit tests. Once you have your war file, you can deploy it.</p>
+<p>Being Maven centric, you can compile and package it with <code>mvn clean compile</code>, <code>mvn clean
+    package</code> or <code>mvn clean install</code>. The <code>package</code> and <code>install</code> phase will
+    automatically trigger the unit tests. Once you have your war file, you can deploy it.</p>
 
 <h2>Deploy the sample</h2>
 
 <p>This sample has been tested with GlassFish 3.1.2 in several modes :</p>
 
 <ul>
-<li>GlassFish runtime : <a href="http://glassfish.java.net/public/downloadsindex.html">download GlassFish</a>, install it, start GlassFish (typing <code>asadmin start-</code>domain) and once the application is packaged deploy it (using the admin console or the command line <code>asadmin deploy target/sampleArquilianWytiwyr.war</code>)</li>
-<li>GlassFish embedded : use the <a href="http://maven-glassfish-plugin.java.net/">GlassFish Maven Plugin</a> by running <code>mvn clean package embedded-glassfish:run</code></li>
+    <li>GlassFish runtime : <a href="http://glassfish.java.net/public/downloadsindex.html">download GlassFish</a>,
+        install it, start GlassFish (typing <code>asadmin start-</code>domain) and once the application is packaged
+        deploy it (using the admin console or the command line <code>asadmin deploy
+            target/sampleArquilianWytiwyr.war</code>)
+    </li>
+    <li>GlassFish embedded : use the <a href="http://maven-glassfish-plugin.java.net/">GlassFish Maven Plugin</a> by
+        running <code>mvn clean package embedded-glassfish:run</code></li>
 </ul>
 
 
 <h2>Execute the sample</h2>
 
-<p>Once deployed you can call the <a href="rs/items">ItemEJB REST service</a> and see all the books in the database. You can also run some <a href="http://curl.haxx.se/">curl</a> commands :</p>
+<p>Once deployed you can call the <a href="rs/items">ItemEJB REST service</a> and see all the books in the database. You
+    can also run some <a href="http://curl.haxx.se/">curl</a> commands :</p>
 
 <ul>
-<li><code>curl -X GET http://localhost:8080/sampleArquilianWytiwyr/rs/items</code></li>
-<li><code>curl -X GET -H "accept: application/json" http://localhost:8080/sampleArquilianWytiwyr/rs/items</code></li>
+    <li><code>curl -X GET http://localhost:8080/sampleArquilianWytiwyr/rs/items</code></li>
+    <li><code>curl -X GET -H "accept: application/json" http://localhost:8080/sampleArquilianWytiwyr/rs/items</code>
+    </li>
 </ul>
 
 
 <p>The purpose of this sample is to execute unit and integration tests. So to execute it you can run :</p>
 
 <ul>
-<li><code>mvn test</code> : this will execute the unit test ItemEJBTest which uses Mockito</li>
-<li><code>mvn integration-test</code> : this will execute both integration tests <code>ItemEJBWithArquillianIT</code> and <code>ItemEJBWithoutArquillianIT</code></li>
+    <li><code>mvn test</code> : this will execute the unit test ItemEJBTest which uses Mockito</li>
+    <li><code>mvn integration-test</code> : this will execute both integration tests
+        <code>ItemEJBWithArquillianIT</code> and <code>ItemEJBWithoutArquillianIT</code></li>
 </ul>
 
 
 <div class="footer">
 
-        <span class="footerTitle"><span class="uc">a</span>ntonio <span class="uc">g</span>oncalves</span>
+    <span class="footerTitle"><span class="uc">a</span>ntonio <span class="uc">g</span>oncalves</span>
 
-    </div>
+</div>
 
 </body>
 </html>

@@ -42,7 +42,7 @@ public class Book {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "tags")
-    private List<String> tags = new ArrayList<String>();
+    private List<String> tags = new ArrayList<>();
 
     // ======================================
     // =            Constructors            =

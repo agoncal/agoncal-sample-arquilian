@@ -2,7 +2,6 @@ package org.agoncal.sample.arquilian.wytiwyr;
 
 import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -65,7 +64,7 @@ public class ItemEJBTest {
     @Test
     public void shouldFindAllScifiBooks() throws Exception {
 
-        List<Book> books = new ArrayList<Book>();
+        List<Book> books = new ArrayList<>();
 
         // Finds all the scifi books
         when(mockedEntityManager.createNamedQuery(Book.FIND_ALL_SCIFI, Book.class)).thenReturn(mockedQuery);

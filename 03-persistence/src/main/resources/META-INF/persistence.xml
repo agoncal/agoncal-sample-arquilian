@@ -4,7 +4,7 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
     <persistence-unit name="sampleArquilianPersistencePU" transaction-type="JTA">
-        <jta-data-source>java:global/jdbc/sampleArquilianWytiwyrDS</jta-data-source>
+        <jta-data-source>jdbc/__default</jta-data-source>
         <class>org.agoncal.sample.arquilian.persistence.Book</class>
         <properties>
             <property name="eclipselink.target-database" value="DERBY"/>
