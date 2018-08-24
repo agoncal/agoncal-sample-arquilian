@@ -14,15 +14,22 @@
         <module>01-wytiwyr</module>
         <module>02-se-container</module>
         <module>03-persistence</module>
+        <module>04-consul</module>
     </modules>
 
     <properties>
         <version.java>1.8</version.java>
-        <!--Test-->
+        <version.javaee>8.0</version.javaee>
+        <version.slf4j>1.7.25</version.slf4j>
+        <version.config>1.2</version.config>
+        <version.consul>1.2.4</version.consul>
+        <!--App Servers-->
         <version.junit>4.12</version.junit>
         <version.glassfish>5.0</version.glassfish>
         <version.weld>3.0.5.Final</version.weld>
         <version.openwebeans>1.2.1</version.openwebeans>
+        <version.thorntail>2.1.0.Final</version.thorntail>
+        <!--Test-->
         <version.arquillian>1.4.0.Final</version.arquillian>
         <version.arquillian.persistence>1.0.0.Alpha7</version.arquillian.persistence>
         <version.arquillian.glassfish.embedded>1.0.0.CR4</version.arquillian.glassfish.embedded>
@@ -30,6 +37,8 @@
         <version.arquillian.glassfish.openwebbeans-embedded>1.0.0.CR2
         </version.arquillian.glassfish.openwebbeans-embedded>
         <version.mockito>2.21.0</version.mockito>
+        <version.rest-assured>3.1.0</version.rest-assured>
+        <version.assertj>3.10.0</version.assertj>
         <!--Maven Plugins-->
         <version.maven.embedded.glassfish.plugin>3.1.1</version.maven.embedded.glassfish.plugin>
         <version.maven.clean.plugin>3.1.0</version.maven.clean.plugin>
@@ -45,6 +54,14 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!-- Java EE -->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>${version.javaee}</version>
+                <scope>provided</scope>
+            </dependency>
 
             <!-- GlassFish -->
             <dependency>
@@ -70,6 +87,23 @@
                 <version>${version.openwebeans}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- Others -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jdk14</artifactId>
+                <version>${version.slf4j}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.geronimo.config</groupId>
+                <artifactId>geronimo-config-impl</artifactId>
+                <version>${version.config}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.orbitz.consul</groupId>
+                <artifactId>consul-client</artifactId>
+                <version>${version.consul}</version>
             </dependency>
 
             <!-- Arquillian -->
@@ -134,9 +168,20 @@
                 <version>${version.mockito}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured</artifactId>
+                <version>${version.rest-assured}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${version.assertj}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
 
     <build>
         <pluginManagement>
