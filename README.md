@@ -3,6 +3,8 @@
 Several samples about Arquillian : 
 
 * 01-wytiwyr : What You Test Is What You Run
+* 02-se-container : Testing within Java SE container
+* 03-persistence : Arquillian Persistence
 
 # Licensing
 
