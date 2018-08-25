@@ -13,6 +13,26 @@ The purpose of this sample is to show you how test a REST endpoint that needs Co
 
 Being Maven centric, you can compile and package it with `mvn clean compile`, `mvn clean package` or `mvn clean install`. The `package` and `install` phase will automatically trigger the unit tests. Once you have your war file, you can deploy it.
 
+## Execute it
+
+Don't execute the test and just package the Uber jar with :
+
+```
+$ mvn clean install -Dmaven.test.skip=true
+```
+
+Then, execute the Uber Jar :
+
+```
+$ java -jar target/sampleArquilianConsul-thorntail.jar
+```
+
+Go to the following URLs :
+
+* [http://localhost:8080/sampleArquilianConsul/api/numbers/book]()
+* [http://localhost:8080/sampleArquilianConsul/api/numbers/book]()
+
+
 ## Execute the test
 
 The purpose of this sample is to execute unit and integration tests. So to execute it you can run :
