@@ -16,8 +16,6 @@
  */
 package org.agoncal.sample.arquilian.consul;
 
-import org.eclipse.microprofile.config.Config;
-import org.eclipse.microprofile.config.ConfigProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +25,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.concurrent.TimeUnit;
 
 @ApplicationScoped
 @Path("numbers")
@@ -36,15 +33,9 @@ public class NumberResource {
 
     private final Logger log = LoggerFactory.getLogger(NumberResource.class);
 
-    private int numberApiFakeTimeout = 0;
-
     @GET
     @Path("book")
-    public Response generateBookNumber() throws InterruptedException {
-        final Config config = ConfigProvider.getConfig();
-        config.getOptionalValue("NUMBER_API_FAKE_TIMEOUT", Integer.class).ifPresent(t -> numberApiFakeTimeout = t);
-        log.info("Waiting for " + numberApiFakeTimeout + " seconds");
-        TimeUnit.SECONDS.sleep(numberApiFakeTimeout);
+    public Response generateBookNumber() {
         log.info("Generating a book number");
         return Response.ok("BK-" + Math.random()).build();
     }

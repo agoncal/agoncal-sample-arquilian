@@ -38,23 +38,25 @@ public class ConsulManagementService {
 
     private final Logger log = LoggerFactory.getLogger(ConsulManagementService.class);
 
-    // Service
-    private static final String NUMBER_API_NAME = "CONSUL_NUMBER_API";
-    private String numberApiHost = "http://localhost";
-    private Integer numberApiPort = 8084;
+    // Number Resource
+    private static final String NUMBER_RESOURCE_NAME = "CONSUL_NUMBER_RESOURCE";
+    private String numberResourceHost = "http://localhost";
+    private Integer numberResourcePort = 8084;
     // Consul
     private String consulHost = "http://localhost";
     private Integer consulPort = 8500;
     private AgentClient agentClient;
 
     @PostConstruct
-    protected void registerService() {
+    protected void registerNumberResource() {
 
         final Config config = ConfigProvider.getConfig();
-        config.getOptionalValue("NUMBER_API_HOST", String.class).ifPresent(host -> numberApiHost = host);
-        config.getOptionalValue("NUMBER_API_PORT", Integer.class).ifPresent(port -> numberApiPort = port);
+        config.getOptionalValue("NUMBER_API_HOST", String.class).ifPresent(host -> numberResourceHost = host);
+        config.getOptionalValue("NUMBER_API_PORT", Integer.class).ifPresent(port -> numberResourcePort = port);
         config.getOptionalValue("CONSUL_HOST", String.class).ifPresent(host -> consulHost = host);
         config.getOptionalValue("CONSUL_PORT", Integer.class).ifPresent(port -> consulPort = port);
+
+        log.info("Number resource host and port " + numberResourceHost + ":" + numberResourcePort);
 
         log.info("Consul host and port " + consulHost + ":" + consulPort);
         Consul consul = Consul.builder().withUrl(consulHost + ":" + consulPort).build();
@@ -63,21 +65,21 @@ public class ConsulManagementService {
         final ImmutableRegistration registration =
             ImmutableRegistration.builder()
                                  .id(UUID.randomUUID().toString())
-                                 .name(NUMBER_API_NAME)
-                                 .address(numberApiHost)
-                                 .port(numberApiPort)
-                                 .check(http(numberApiHost + ":" + numberApiPort + "/number-api/api/numbers/health", 5))
+                                 .name(NUMBER_RESOURCE_NAME)
+                                 .address(numberResourceHost)
+                                 .port(numberResourcePort)
+                                 .check(http(numberResourceHost + ":" + numberResourcePort + "/number-api/api/numbers/health", 5))
                                  .build();
         agentClient.register(registration);
 
-        log.info(NUMBER_API_NAME + " is registered in consul on " + numberApiHost + ":" + numberApiPort);
+        log.info(NUMBER_RESOURCE_NAME + " is registered in consul on " + numberResourceHost + ":" + numberResourcePort);
     }
 
     @PreDestroy
-    protected void unregisterService() {
+    protected void unregisterNumberResource() {
 
-        agentClient.deregister(NUMBER_API_NAME);
+        agentClient.deregister(NUMBER_RESOURCE_NAME);
 
-        log.info(NUMBER_API_NAME + " is un-registered from consul");
+        log.info(NUMBER_RESOURCE_NAME + " is un-registered from consul");
     }
 }

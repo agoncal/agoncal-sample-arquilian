@@ -76,6 +76,16 @@
     <build>
         <finalName>sampleArquilianConsul</finalName>
         <plugins>
+            <plugin>
+                <groupId>io.thorntail</groupId>
+                <artifactId>thorntail-maven-plugin</artifactId>
+                <configuration>
+                    <properties>
+                        <swarm.context.path>${project.build.finalName}</swarm.context.path>
+                        <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+                    </properties>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
