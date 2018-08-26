@@ -28,6 +28,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.inject.Inject;
 import java.util.UUID;
 
 import static com.orbitz.consul.model.agent.Registration.RegCheck.http;
@@ -41,10 +42,10 @@ public class ConsulManagementService {
     // Number Resource
     private static final String NUMBER_RESOURCE_NAME = "CONSUL_NUMBER_RESOURCE";
     private String numberResourceHost = "http://localhost";
-    private Integer numberResourcePort = 8084;
+    private Integer numberResourcePort = 8080;
     // Consul
-    private String consulHost = "http://localhost";
-    private Integer consulPort = 8500;
+    @Inject
+    private Consul consul;
     private AgentClient agentClient;
 
     @PostConstruct
@@ -53,13 +54,12 @@ public class ConsulManagementService {
         final Config config = ConfigProvider.getConfig();
         config.getOptionalValue("NUMBER_API_HOST", String.class).ifPresent(host -> numberResourceHost = host);
         config.getOptionalValue("NUMBER_API_PORT", Integer.class).ifPresent(port -> numberResourcePort = port);
-        config.getOptionalValue("CONSUL_HOST", String.class).ifPresent(host -> consulHost = host);
-        config.getOptionalValue("CONSUL_PORT", Integer.class).ifPresent(port -> consulPort = port);
+
+        final String healthURL = numberResourceHost + ":" + numberResourcePort + "/sampleArquilianConsul/api/numbers/health";
 
         log.info("Number resource host and port " + numberResourceHost + ":" + numberResourcePort);
+        log.info("Number resource health URL " + healthURL);
 
-        log.info("Consul host and port " + consulHost + ":" + consulPort);
-        Consul consul = Consul.builder().withUrl(consulHost + ":" + consulPort).build();
         agentClient = consul.agentClient();
 
         final ImmutableRegistration registration =
@@ -68,7 +68,7 @@ public class ConsulManagementService {
                                  .name(NUMBER_RESOURCE_NAME)
                                  .address(numberResourceHost)
                                  .port(numberResourcePort)
-                                 .check(http(numberResourceHost + ":" + numberResourcePort + "/number-api/api/numbers/health", 5))
+                                 .check(http(healthURL, 5))
                                  .build();
         agentClient.register(registration);
 

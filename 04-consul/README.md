@@ -21,17 +21,25 @@ Don't execute the test and just package the Uber jar with :
 $ mvn clean install -Dmaven.test.skip=true
 ```
 
-Then, execute the Uber Jar :
+Then, if you execute the Uber Jar without any parameter it won't work (because it's looking for Consul at a wrong host/port):
 
 ```
 $ java -jar target/sampleArquilianConsul-thorntail.jar
+...
+Caused by: javax.ejb.EJBException: com.orbitz.consul.ConsulException: Error connecting to Consul
+```
+
+What you have to do is to pass parameters as follow to setup the correct Consul host and port:
+
+```
+$ $ java -DCONSUL_HOST=http://localhost -DCONSUL_PORT=8500 -jar target/sampleArquilianConsul-thorntail.jar 
 ```
 
 Go to the following URLs :
 
 * [http://localhost:8080/sampleArquilianConsul/api/numbers/book]()
-* [http://localhost:8080/sampleArquilianConsul/api/numbers/book]()
-
+* [http://localhost:8080/sampleArquilianConsul/api/numbers/health]()
+* [http://localhost:8500/ui/dc1/services/CONSUL_NUMBER_RESOURCE]()
 
 ## Execute the test
 
