@@ -16,33 +16,21 @@
  */
 package org.agoncal.sample.arquilian.consul;
 
-import com.orbitz.consul.Consul;
-import org.eclipse.microprofile.config.Config;
-import org.eclipse.microprofile.config.ConfigProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.enterprise.context.ApplicationScoped;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @ApplicationScoped
-public class ConsulProducer {
+@Path("numbers")
+@Produces(MediaType.TEXT_PLAIN)
+public class NumberResource {
 
-    private final Logger log = LoggerFactory.getLogger(ConsulProducer.class);
-
-    // Consul
-    private String consulHost = "http://localDUMMYhost";
-    private Integer consulPort = 9999;
-
-    //@Produces
-    private Consul produceConsul() {
-
-        final Config config = ConfigProvider.getConfig();
-        config.getOptionalValue("CONSUL_HOST", String.class).ifPresent(host -> consulHost = host);
-        config.getOptionalValue("CONSUL_PORT", Integer.class).ifPresent(port -> consulPort = port);
-
-        log.info("Consul host and port " + consulHost + ":" + consulPort);
-        Consul consul = Consul.builder().withUrl(consulHost + ":" + consulPort).build();
-
-        return consul;
+    @GET
+    @Path("book")
+    public Response generateBookNumber() {
+        return Response.ok("BK-" + Math.random()).build();
     }
 }

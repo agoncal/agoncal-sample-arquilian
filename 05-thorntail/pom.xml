@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.agoncal.sample.arquilian</groupId>
+    <artifactId>thorntail</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+    <name>05 - Thorntail</name>
+
+    <parent>
+        <groupId>org.agoncal.sample.arquilian</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <dependencyManagement>
+        <!-- BOMS -->
+        <dependencies>
+            <dependency>
+                <groupId>io.thorntail</groupId>
+                <artifactId>bom</artifactId>
+                <version>${version.thorntail}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+        </dependency>
+        <!-- Tests -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.thorntail</groupId>
+            <artifactId>arquillian</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>sampleArquilianThorntail</finalName>
+        <plugins>
+            <plugin>
+                <groupId>io.thorntail</groupId>
+                <artifactId>thorntail-maven-plugin</artifactId>
+                <configuration>
+                    <properties>
+                        <swarm.context.path>${project.build.finalName}</swarm.context.path>
+                        <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+                    </properties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

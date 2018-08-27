@@ -14,10 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.agoncal.sample.arquilian.consul;
+package org.agoncal.sample.arquilian.thorntail;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.agoncal.sample.arquilian.consul.NumberResource;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -26,18 +27,13 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static io.restassured.RestAssured.get;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Arquillian.class)
 @RunAsClient()
-//@DefaultDeployment
 public class NumberResourceTest {
-
-    private static final Logger log = LoggerFactory.getLogger(NumberResourceTest.class);
 
     @BeforeClass
     public static void setup() throws Exception {
@@ -47,10 +43,7 @@ public class NumberResourceTest {
     @Deployment
     public static WebArchive createDeployment() {
         WebArchive war = ShrinkWrap.create(WebArchive.class)
-                .addPackage(NumberResource.class.getPackage())
-        ;
-
-        log.info(war.toString(true));
+                .addPackage(NumberResource.class.getPackage());
         return war;
     }
 
