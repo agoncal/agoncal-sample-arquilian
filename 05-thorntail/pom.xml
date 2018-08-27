@@ -10,11 +10,23 @@
     <packaging>war</packaging>
     <name>05 - Thorntail</name>
 
-    <parent>
-        <groupId>org.agoncal.sample.arquilian</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.0</version>
-    </parent>
+    <properties>
+        <!--<version.java>1.8</version.java>-->
+        <version.javaee>8.0</version.javaee>
+        <version.junit>4.12</version.junit>
+        <version.thorntail>2.1.0.Final</version.thorntail>
+        <!--Test-->
+        <version.arquillian>1.4.0.Final</version.arquillian>
+        <version.rest-assured>3.1.0</version.rest-assured>
+        <version.assertj>3.10.0</version.assertj>
+        <!--Maven Plugins-->
+        <!--<version.maven.failsafe.plugin>2.22.0</version.maven.failsafe.plugin>-->
+        <version.maven.war.plugin>2.4</version.maven.war.plugin>
+        <!--Project-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
 
     <dependencyManagement>
         <!-- BOMS -->
@@ -26,6 +38,13 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${version.arquillian}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -33,23 +52,32 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
+            <version>${version.javaee}</version>
         </dependency>
         <!-- Tests -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>${version.junit}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+            <version>${version.rest-assured}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
+            <version>${version.assertj}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
+            <version>${version.arquillian}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.thorntail</groupId>
@@ -63,11 +91,27 @@
             <plugin>
                 <groupId>io.thorntail</groupId>
                 <artifactId>thorntail-maven-plugin</artifactId>
+                <version>${version.thorntail}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <properties>
                         <swarm.context.path>${project.build.finalName}</swarm.context.path>
                         <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
                     </properties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.maven.war.plugin}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
         </plugins>
