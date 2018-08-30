@@ -56,6 +56,22 @@
     <dependencyManagement>
         <dependencies>
 
+            <!-- BOMs -->
+            <dependency>
+                <groupId>io.thorntail</groupId>
+                <artifactId>bom</artifactId>
+                <version>${version.thorntail}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${version.arquillian}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
             <!-- Java EE -->
             <dependency>
                 <groupId>javax</groupId>
@@ -108,13 +124,6 @@
             </dependency>
 
             <!-- Arquillian -->
-            <dependency>
-                <groupId>org.jboss.arquillian</groupId>
-                <artifactId>arquillian-bom</artifactId>
-                <version>${version.arquillian}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
             <dependency>
                 <groupId>org.jboss.arquillian.junit</groupId>
                 <artifactId>arquillian-junit-container</artifactId>
@@ -246,6 +255,12 @@
                             </goals>
                         </execution>
                     </executions>
+                    <configuration>
+                        <properties>
+                            <swarm.context.path>${project.build.finalName}</swarm.context.path>
+                            <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+                        </properties>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

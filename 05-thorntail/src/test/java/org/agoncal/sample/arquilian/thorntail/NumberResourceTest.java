@@ -16,41 +16,30 @@
  */
 package org.agoncal.sample.arquilian.thorntail;
 
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.agoncal.sample.arquilian.consul.NumberResource;
-import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.wildfly.swarm.arquillian.DefaultDeployment;
 
 import static io.restassured.RestAssured.get;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Arquillian.class)
-@RunAsClient()
+@RunAsClient
+@DefaultDeployment
 public class NumberResourceTest {
 
-    @BeforeClass
-    public static void setup() throws Exception {
-        RestAssured.baseURI = "http://localhost:8080";
-    }
-
-    @Deployment
-    public static WebArchive createDeployment() {
-        WebArchive war = ShrinkWrap.create(WebArchive.class)
-                .addPackage(NumberResource.class.getPackage());
-        return war;
-    }
+//    @BeforeClass
+//    public static void setup() throws Exception {
+//        RestAssured.baseURI = "http://localhost:8080/sampleArquilianThorntail";
+//    }
 
     @Test
     public void generateBookNumber() throws Exception {
         Response response =
-                get("/api/numbers/book")
+                get("http://localhost:8080/api/numbers/book")
                         .then()
                         .extract().response();
 
